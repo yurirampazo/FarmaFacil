@@ -18,7 +18,7 @@ import com.FarmaFacil.Farma.repository.CategoriaRepository;
 
 @RestController
 @RequestMapping("/categoria")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 public class CategoriaController {
 	
 	@Autowired
