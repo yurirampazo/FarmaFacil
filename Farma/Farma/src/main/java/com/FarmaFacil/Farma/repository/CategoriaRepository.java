@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.FarmaFacil.Farma.model.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
-	public List<Categoria> findAllByDescricaoContainingIgnoreCase(String nome);
+	public List<Categoria> findAllByDescricaoContainingIgnoreCase(String descricao);
 }
