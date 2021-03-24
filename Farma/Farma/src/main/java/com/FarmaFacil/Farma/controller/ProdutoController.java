@@ -26,32 +26,32 @@ public class ProdutoController {
 	private ProdutoRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Produto>> GetByName () {
+	public ResponseEntity<List<Produto>> findAllProduto () {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity <Produto> GetById(@PathVariable long id) {
+	public ResponseEntity <Produto> findByIDProduto (@PathVariable long id) {
 		return repository.findById(id).map(resp ->  ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());	
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity <List<Produto>> GetByName(@PathVariable String nome) {
+	public ResponseEntity <List<Produto>> findByDescricaoTitulo (@PathVariable String nome) {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@PostMapping
-	public ResponseEntity <Produto> post (@RequestBody Produto produto) {
+	public ResponseEntity <Produto> postProduto (@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Produto> put (@RequestBody Produto produto) {
+	public ResponseEntity<Produto> putProduto (@RequestBody Produto produto) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	public void deleteProduto (@PathVariable long id) {
 		repository.deleteById(id);
 	}
 }
